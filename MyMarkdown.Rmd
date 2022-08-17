@@ -1,0 +1,44 @@
+---
+title: "Penguins Dataset Analysis Report"
+author: "Doyoung Kim"
+date: "2022-08-08"
+output:
+  html_document: default
+  pdf_document: default
+  word_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## 팔머펭귄 데이터셋을 분석해보자.
+
+팔머펭귄 데이터셋이 궁금해? 여기를 가봐.
+<https://joonion.quarto.pub>
+
+psych 패키지의 describe() 함수로 penguins 데이터셋의 요약정보를 출력해보자.
+
+```{r}
+library(palmerpenguins)
+library(psych)
+describe(penguins)
+```
+
+## 이제부터 그림을 그려볼거야.
+
+이런 순서로 해보자.
+
+1. 부리 길이 - 부리 깊이 의 산점도를 그린다.
+  * 음의 상관이 있는 것처럼 보이는가?
+  * 이것은 *Simpson's Paradox*로 인한 것이다.
+2. 펭귄의 종별로 색깔을 입힌다.
+  * 종별로 구분하니 양의 상관이 있는 것처럼 보이지 않는가?
+  * 심슨의 역설은 우리가 조심해야 할 통계의 함정이다.
+  
+```{r}
+df <- na.omit(penguins)
+plot(bill_depth_mm ~ bill_length_mm, data = df, pch = 19, col = 'tomato')
+
+plot(bill_depth_mm ~ bill_length_mm, data = df, pch = 19, col = as.numeric(df$species) + 1)
+```

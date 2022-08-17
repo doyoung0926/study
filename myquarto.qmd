@@ -1,0 +1,26 @@
+---
+title: "나의 첫 콰르토 문서"
+author: "김도영"
+format: html
+editor: visual
+---
+
+## Quarto
+
+콰르토로 문서를 작성을 합시다. <https://quarto.org>.
+
+## Running Code
+**콰르토**는 R **마크다운**의 확장 버전입니다.
+
+```{r}
+1 + 1
+```
+
+You can add options to executable code like this
+
+```{r}
+#| echo: false
+2 * 2
+```
+
+The `echo: false` option disables the printing of code (only output is displayed).
